@@ -128,21 +128,21 @@
         }
 
         //handle numbers
-        NSRange digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]];
-        while ( digitsRange.location!=NSNotFound) {
-            
-            NSRange digitsRangeEnd = [result rangeOfString:@"\\D" options:NSRegularExpressionSearch range:NSMakeRange(digitsRange.location, result.length-digitsRange.location)];
-            if (digitsRangeEnd.location == NSNotFound) {
-                //spands till the end of the key name
-                digitsRangeEnd = NSMakeRange(result.length, 1);
-            }
-            
-            NSRange replaceRange = NSMakeRange(digitsRange.location, digitsRangeEnd.location - digitsRange.location);
-            NSString* digits = [result substringWithRange:replaceRange];
-            
-            [result replaceCharactersInRange:replaceRange withString:[NSString stringWithFormat:@"_%@", digits]];
-            digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] options:kNilOptions range:NSMakeRange(digitsRangeEnd.location+1, result.length-digitsRangeEnd.location-1)];
-        }
+        //NSRange digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]];
+        //while ( digitsRange.location!=NSNotFound) {
+        //    
+        //    NSRange digitsRangeEnd = [result rangeOfString:@"\\D" options:NSRegularExpressionSearch range:NSMakeRange(digitsRange.location, result.length-digitsRange.location)];
+        //    if (digitsRangeEnd.location == NSNotFound) {
+        //        //spands till the end of the key name
+        //        digitsRangeEnd = NSMakeRange(result.length, 1);
+        //    }
+        //    
+        //    NSRange replaceRange = NSMakeRange(digitsRange.location, digitsRangeEnd.location - digitsRange.location);
+        //    NSString* digits = [result substringWithRange:replaceRange];
+        //    
+        //    [result replaceCharactersInRange:replaceRange withString:[NSString stringWithFormat:@"_%@", digits]];
+        //    digitsRange = [result rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] options:kNilOptions range:NSMakeRange(digitsRangeEnd.location+1, result.length-digitsRangeEnd.location-1)];
+        //}
         
         return result;
     };
